@@ -1,0 +1,10 @@
+[
+  {
+    "BookId": 1,
+    "Title": "HP",
+    "Author": "JKR",
+    "ISBN": "12",
+    "TotalQuantity": 100,
+    "AvailableQuantity": 100
+  }
+]

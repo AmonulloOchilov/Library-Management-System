@@ -1,0 +1,14 @@
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/bin/Debug/net9.0/Library Management System
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/bin/Debug/net9.0/Library Management System.deps.json
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/bin/Debug/net9.0/Library Management System.runtimeconfig.json
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/bin/Debug/net9.0/Library Management System.dll
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/bin/Debug/net9.0/Library Management System.pdb
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.GeneratedMSBuildEditorConfig.editorconfig
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.AssemblyInfoInputs.cache
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.AssemblyInfo.cs
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.csproj.CoreCompileInputs.cache
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.dll
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/refint/Library Management System.dll
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.pdb
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.genruntimeconfig.cache
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/ref/Library Management System.dll
