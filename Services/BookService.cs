@@ -65,4 +65,36 @@ public class BookService
         SaveBooks(books);
         Console.WriteLine("Book is saved successfully!");
     }
+
+    public void ViewAllBooks()
+    {
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine("No books found");
+            return;
+        }
+
+        string json = File.ReadAllText(filePath);
+        var books = LoadBooks();
+        if (string.IsNullOrEmpty(json) || books.Count == 0)
+        {
+            Console.WriteLine("No Books available");
+            return;
+        }
+
+        foreach (var book in books)
+        {
+            Console.WriteLine($"ID: {book.BookId} - Title: {book.Title} - Author: {book.Author} - " +
+                              $"ISBN: {book.ISBN} - Total Quantity: {book.TotalQuantity} - Available Quantity: " +
+                              $"{book.AvailableQuantity} - Is Available: {book.IsAvailable}");
+        }
+    }
+
+    public List<Book> SearchBooks(string searchTerm)
+    {
+        var books = LoadBooks();
+        return books.Where(book =>
+            book.Title.ToLower().Contains(searchTerm) || book.Author.ToLower().Contains(searchTerm) ||
+            book.ISBN.ToLower().Contains(searchTerm)).ToList();
+    }
 }

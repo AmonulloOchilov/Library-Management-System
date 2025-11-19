@@ -1,7 +1,9 @@
 ﻿using Library_Management_System.Entities;
+using System.Text.Json;
 using Library_Management_System.Services;
 
 BookService bookService = new BookService();
+MemberService memberService = new MemberService();
 Console.WriteLine("Welcome to Library Management System");
 void ShowMenu()
 {
@@ -22,11 +24,20 @@ void ShowMenu()
 while (true)
 {
     ShowMenu();
-    string choice = Console.ReadLine();
+    string choice = Console.ReadLine()!;
     switch (choice)
     {
         case "1":
             AddBookMenu();
+            break;
+        case "2":
+            bookService.ViewAllBooks();
+            break;
+        case "3":
+            SearchBooksMenu();
+            break;
+        case "4":
+            AddMemberMenu();
             break;
         case "10":
             Environment.Exit(0);
@@ -51,6 +62,53 @@ void AddBookMenu()
         int totalQuantity = int.Parse(Console.ReadLine()!);
         
         bookService.AddBook(bookId, bookTitle, bookAuthor, bookIsbn, totalQuantity);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Error: {e.Message}");
+        throw;
+    }
+}
+
+void SearchBooksMenu()
+{
+    Console.Write($"Enter search term (title, author, or ISBN): ");
+    string searchTerm = Console.ReadLine()!.ToLower();
+    var results = bookService.SearchBooks(searchTerm);
+    if (results.Any())
+    {
+        Console.WriteLine($"Found {results.Count} book(s)");
+        foreach (var book in results)
+        {
+            Console.WriteLine($"ID: {book.BookId} - Title: {book.Title} - Author: {book.Author} - " +
+                              $"ISBN: {book.ISBN} - Total Quantity: {book.TotalQuantity} - Available Quantity: " +
+                              $"{book.AvailableQuantity} - Is Available: {book.IsAvailable}");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No books found");
+    }
+}
+
+void AddMemberMenu()
+{
+    Console.WriteLine("Add new Member");
+    try
+    {
+        Console.Write("Enter Member ID: ");
+        int memberId = int.Parse(Console.ReadLine()!);
+        Console.Write("Enter Firstname: ");
+        string memberFirstName = Console.ReadLine()!;
+        Console.Write("Enter Lastname: ");
+        string memberLastName = Console.ReadLine()!;
+        Console.Write("Enter email: ");
+        string email = Console.ReadLine()!;
+        Console.Write("Enter Phone number: ");
+        string phone = Console.ReadLine()!;
+        Console.Write("Enter Membership date: ");
+        DateTime membershipDate = DateTime.Parse(Console.ReadLine()!);
+        memberService.AddMembers(memberId, memberFirstName, memberLastName, email, phone, membershipDate);
     }
     catch (Exception e)
     {

@@ -1,3 +1,11 @@
 [
-  
+  {
+    "MemberId": 1,
+    "FirstName": "Amin",
+    "LastName": "Ochil",
+    "Email": "a436@gmail.com",
+    "Phone": "\u002B992987846169",
+    "MembershipDate": "2025-11-19T00:00:00",
+    "IsActive": true
+  }
 ]

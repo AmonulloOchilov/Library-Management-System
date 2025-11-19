@@ -12,3 +12,4 @@
 /Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.pdb
 /Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.genruntimeconfig.cache
 /Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/ref/Library Management System.dll
+/Users/amonulloochilov/Desktop/Library Management System/Library Management System/obj/Debug/net9.0/Library Management System.sourcelink.json
