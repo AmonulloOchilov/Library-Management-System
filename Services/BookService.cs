@@ -6,19 +6,18 @@ public class BookService
 {
     public readonly string filePath;
 
-    public BookService()
+    public BookService(string customDataPath = null)
     {
-        string dataFolder = "/Users/amonulloochilov/Desktop/Library Management System/Library Management System/Data";
+        string dataFolder = customDataPath ?? "/Users/amonulloochilov/Desktop/Library Management System/Library Management System/Data";
         if (!Directory.Exists(dataFolder))
         {
             Directory.CreateDirectory(dataFolder);
         }
-
         filePath = Path.Combine(dataFolder, "books.json");
     }
     
     
-    private List<Book> LoadBooks()
+    public List<Book> LoadBooks()
     {
         if (!File.Exists(filePath))
         {
@@ -43,18 +42,19 @@ public class BookService
         }
     }
     
-    private void SaveBooks(List<Book> books)
+    public void SaveBooks(List<Book> books)
     {
         string json = JsonSerializer.Serialize(books, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(filePath, json);
     }
 
-    public void AddBook(int bookId,string title, string author,string isbn, int totalQuantity)
+    public void AddBook(string title, string author,string isbn, int totalQuantity)
     {
         var books = LoadBooks();
+        int newBookId = books.Count > 0 ? books.Max(b => b.BookId) + 1 : 1;
         var book = new Book()
         {
-            BookId = bookId,
+            BookId = newBookId,
             Title = title,
             Author = author,
             ISBN = isbn,
@@ -82,11 +82,13 @@ public class BookService
             return;
         }
 
-        foreach (var book in books)
+        Console.WriteLine("{0,-10} {1,-23} {2,-23} {3,-17} {4,-22} {5, -20}",
+            "ID", "Title", "Author", "ISBN", "Total Quantity", "Available Quantity");
+
+        foreach (var b in books)
         {
-            Console.WriteLine($"ID: {book.BookId} - Title: {book.Title} - Author: {book.Author} - " +
-                              $"ISBN: {book.ISBN} - Total Quantity: {book.TotalQuantity} - Available Quantity: " +
-                              $"{book.AvailableQuantity} - Is Available: {book.IsAvailable}");
+            Console.WriteLine("{0,-10} {1,-23} {2,-23} {3,-17} {4,-22} {5, -20}",
+                b.BookId, b.Title, b.Author, b.ISBN, b.TotalQuantity, b.AvailableQuantity);
         }
     }
 
@@ -96,5 +98,16 @@ public class BookService
         return books.Where(book =>
             book.Title.ToLower().Contains(searchTerm) || book.Author.ToLower().Contains(searchTerm) ||
             book.ISBN.ToLower().Contains(searchTerm)).ToList();
+    }
+    public void UpdateBook(Book updatedBook)
+    {
+        var books = LoadBooks();
+        var bookIndex = books.FindIndex(b => b.BookId == updatedBook.BookId);
+    
+        if (bookIndex >= 0)
+        {
+            books[bookIndex] = updatedBook;
+            SaveBooks(books);
+        }
     }
 }

@@ -1,3 +1,22 @@
 [
-  
+  {
+    "TransactionId": 1,
+    "BookId": 1,
+    "MemberId": 1,
+    "IssueDate": "2025-12-03T14:18:57.428026+02:00",
+    "DueDate": "2025-12-17T14:18:57.450949+02:00",
+    "ReturnDate": "2025-12-03T14:25:30.137769+02:00",
+    "Status": "Returned",
+    "FineAmount": null
+  },
+  {
+    "TransactionId": 2,
+    "BookId": 1,
+    "MemberId": 1,
+    "IssueDate": "2025-12-03T21:46:39.904884+02:00",
+    "DueDate": "2025-12-17T21:46:39.904886+02:00",
+    "ReturnDate": null,
+    "Status": "Issued",
+    "FineAmount": null
+  }
 ]

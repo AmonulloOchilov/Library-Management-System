@@ -10,6 +10,4 @@ public class Transaction
     public DateTime? ReturnDate { get; set; } 
     public string Status { get; set; } 
     public decimal? FineAmount { get; set; } 
-    public Book Book { get; set; }
-    public Member Member { get; set; }
 }

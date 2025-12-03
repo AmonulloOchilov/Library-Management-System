@@ -1,9 +1,17 @@
 [
   {
     "BookId": 1,
-    "Title": "HP",
-    "Author": "JKR",
+    "Title": "Harry Potter",
+    "Author": "J.K.Rawling",
     "ISBN": "12",
+    "TotalQuantity": 100,
+    "AvailableQuantity": 99
+  },
+  {
+    "BookId": 2,
+    "Title": "Harry Potter 2",
+    "Author": "J.K.Rawling",
+    "ISBN": "121212",
     "TotalQuantity": 100,
     "AvailableQuantity": 100
   }

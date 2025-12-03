@@ -7,18 +7,17 @@ public class MemberService
 {
     public readonly string filePath;
 
-    public MemberService()
+    public MemberService(string customDataPath = null)
     {
-        string dataFolder = "/Users/amonulloochilov/Desktop/Library Management System/Library Management System/Data";
+        string dataFolder = customDataPath ?? "/Users/amonulloochilov/Desktop/Library Management System/Library Management System/Data";
         if (!Directory.Exists(dataFolder))
         {
             Directory.CreateDirectory(dataFolder);
         }
-
         filePath = Path.Combine(dataFolder, "members.json");
     }
 
-    private List<Member> LoadMembers()
+    public List<Member> LoadMembers()
     {
         if (!File.Exists(filePath))
         {
@@ -48,21 +47,41 @@ public class MemberService
         File.WriteAllText(filePath,json);
     }
 
-    public void AddMembers(int memberId, string firstName, string lastName, string email, string phoneNumber,
-        DateTime membershipDate)
+    public void AddMembers(string firstName, string lastName, string email, string phoneNumber)
     {
         var members = LoadMembers();
+        int newMemberId = members.Count > 0 ? members.Max(m => m.MemberId) + 1 : 1;
         var member = new Member()
         {
-            MemberId = memberId,
+            MemberId = newMemberId,
             FirstName = firstName,
             LastName = lastName,
             Email = email,
             Phone = phoneNumber,
-            MembershipDate = membershipDate
+            MembershipDate = DateTime.Now
         };
         members.Add(member);
         SaveMembers(members);
         Console.WriteLine("Member is saved successfully");
     }
+
+    public void ViewAllMembers()
+    {
+        Console.WriteLine("View All Members:");
+        var members = LoadMembers();
+        if (members.Count == 0) 
+        {
+            Console.WriteLine("No members available");
+            return;
+        }
+        Console.WriteLine("{0,-10} {1,-15} {2,-15} {3,-22} {4,-22} {5, -20}",
+            "ID", "Name", "Surname", "Email", "Phone Number", "Membership Date");
+
+        foreach (var m in members)
+        {
+            Console.WriteLine("{0,-10} {1,-15} {2,-15} {3,-22} {4,-22} {5, -20}",
+                m.MemberId, m.FirstName, m.LastName, m.Email, m.Phone, m.MembershipDate);
+        }
+    }
+    
 }
